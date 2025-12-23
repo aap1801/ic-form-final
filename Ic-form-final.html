@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Simples</title>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()">
+        <h2>Formulário Simples</h2>
+        <label>Nome: </label>
+            <input type="text" id="Nome">
+                <div id="erroNome" class="erro"></div>
+        <label>Email: </label>
+            <input type="text" id="Email">
+                <div id="erroEmail" class="erro"></div>
+        <label>Senha: </label>
+            <input type="password" id="senha">
+                <div id="erroSenha" class="erro"></div>
+        <button type="submit">Enviar</button>
+    </form>
+<script>
+    function validarFormulario(){
+        let nome = document.getElementById("Nome").value; 
+        let email = document.getelementByid("Email").value;
+        let senha = document.getelementByid("senha").value;
+        let valido = true; 
+        document.getElementById("erroNome").innerText = "";
+        document.getElementById("erroEmail").innerText = "";
+        document.getElementById("erroSenha").innerText = "";
+        
+        if (nome.trim() === "") {
+            document.getElementById("erroNome").innerText = "O nome não pode ser vazio.";
+            valido = false;
+        }
+        if (!email.includes("@")) {
+            document.getElementById("erroEmail").innerText = "O email precisa conter @.";
+            valido = false;
+        }
+        if (senha.length < 8) {
+            document.getElementById("errosSenha").innerText = "A senha precisa ter pelo menos 8 caracteres.";
+            valido = false;
+        }
+        return valido;
+    }
+</script>
+
+</body>
+</html>
